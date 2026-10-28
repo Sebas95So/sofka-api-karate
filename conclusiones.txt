@@ -1,0 +1,37 @@
+CONCLUSIONES - EJERCICIO 2: PRUEBAS API CON KARATE
+
+1. OBJETIVO
+
+Automatizar pruebas de servicios REST para las funcionalidades de registro (signup) e inicio de sesión (login) de Demoblaze, utilizando Karate, Java 17, Maven y JUnit 5.
+
+2. CASOS DE PRUEBA IMPLEMENTADOS
+
+- Registro de un usuario nuevo mediante POST /signup.
+- Intento de registrar un usuario existente, validando el mensaje "This user already exist.".
+- Inicio de sesión con credenciales correctas, verificando la presencia de "Auth_token:" en la respuesta.
+- Inicio de sesión con contraseña incorrecta, validando el mensaje "Wrong password.".
+
+3. RESULTADOS
+
+Durante la ejecución de las pruebas se obtuvo el siguiente resultado:
+
+- Pruebas ejecutadas: 4.
+- Fallos: 0.
+- Errores: 0.
+- Resultado de Maven: BUILD SUCCESS.
+
+Estos resultados corresponden a la ejecución observada durante el desarrollo del ejercicio.
+
+4. HALLAZGOS
+
+- El endpoint de registro puede devolver HTTP 200 tanto en un registro como en un intento de registro duplicado. Por ello, es importante validar también el contenido de la respuesta.
+- Al intentar registrar un usuario existente, la API devuelve el mensaje "This user already exist.".
+- Al iniciar sesión con una contraseña incorrecta, la API devuelve el mensaje "Wrong password.".
+- En el login correcto, la respuesta contiene el indicador "Auth_token:".
+- Se generaron usuarios dinámicos para reducir conflictos con registros creados en ejecuciones anteriores.
+
+5. CONCLUSIÓN FINAL
+
+Se implementaron cuatro escenarios automatizados para las funcionalidades de signup y login de Demoblaze. Las pruebas se ejecutaron correctamente y se incorporaron validaciones del contenido de las respuestas para los casos de registro duplicado, login correcto y login incorrecto.
+
+Como mejora futura, se recomienda fortalecer la validación del registro exitoso y verificar explícitamente que el token de autenticación tenga un valor no vacío.
